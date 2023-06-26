@@ -2,7 +2,34 @@
 
 {% block content %}
 
-<h1>Hello World!</h1>
+{%if LatitudeValue %}
+    {{LatitudeValue}}<br>
+{%endif%}
+{%if LongtitudeValue %}
+    {{LongtitudeValue}}<br>
+{%endif%}
+{%if category_color %}
+    {{category_color}}<br>
+{%endif%}
+{%if category_description %}
+    {{category_description}}<br>
+{%endif%}
+{%if api %}
+    {{api}}<br>
+{%endif%}
 
+{%if api %}
+    {%if api == "Error..."%}
+        There was an error please try again...
+    {%else%}
+        <div class="container-fluid {{category_color}}">
+            <h1 class="display-4">Current AQI: {{api.list.0.main.aqi}}</h1>
+            <p class="lead">        
+                {{category_description}}
+            </p>
+            
+        </div>
+
+    {%endif%}
+{%endif%}
 {% endblock %}
-
